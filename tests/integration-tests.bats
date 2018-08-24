@@ -15,7 +15,7 @@
 # limitations under the License.
 
 load ../scripts/libtest
-load ../scripts/cluster_common
+load ../scripts/libcluster
 
 : ${TEST_CONTEXT:?}
 _get_nginx_content() {
