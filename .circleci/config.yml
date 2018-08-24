@@ -8,6 +8,7 @@ jobs:
     environment:
       CHANGE_MINIKUBE_NONE_USER: true
       MINIKUBE_VERSION: v0.28.2
+      K8S_VERSION: v1.10.0
     steps:
       - checkout
       - run:
@@ -16,7 +17,6 @@ jobs:
       - run:
           name: Setup kubectl, minikube, and start it
           command: |
-            export K8S_VERSION=`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`
             echo "Using kubectl version ${K8S_VERSION}, minicube version ${MINIKUBE_VERSION}"
             # install kubectl
             curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64/kubectl \
