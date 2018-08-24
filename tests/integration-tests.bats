@@ -50,11 +50,11 @@ _verify_content() {
   k8s_wait_for_pod_completed -lrun=${pod}
   content_ret=$(kubectl logs ${pod})
   kubectl delete pod ${pod}
-  echo "# content expected:" >&3
-  echo "# $content_exp" >&3
-  echo "# content returned:" >&3
-  echo "# $content_ret" >&3
-  [[ ${content_ret} == ${content_exp} ]]
+  echo "# content expected: '$content_exp'" >&3
+  echo "# content returned: '$content_ret'" >&3
+  local result=${content_ret} == ${content_exp}
+  echo "# result: '$result'" >&3
+  [[ result ]]
 }
 # __main__ {
 # Verify served content equal to nginx configmap
