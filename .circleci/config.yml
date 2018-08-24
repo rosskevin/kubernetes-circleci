@@ -22,9 +22,10 @@ jobs:
             # install kubectl
             curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64/kubectl \
               && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-            # install bats
-            git clone --depth=1 https://github.com/sstephenson/bats.git bats \
-              && cd bats && sudo ./install.sh /usr/local && rm -rf bats
+            # install bats (over old bats)
+            sudo rm -f /usr/local/bin/bats
+            git clone --depth=1 https://github.com/bats-core/bats-core.git \
+              && cd bats-core && sudo ./install.sh /usr/local && rm -rf bats-core
             # install minikube
             curl -Lo minikube https://github.com/kubernetes/minikube/releases/download/${MINIKUBE_VERSION}/minikube-linux-amd64 \
               && chmod +x minikube && sudo mv minikube /usr/local/bin/

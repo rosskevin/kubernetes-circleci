@@ -50,10 +50,10 @@ _verify_content() {
   k8s_wait_for_pod_completed -lrun=${pod}
   content_ret=$(kubectl logs ${pod})
   kubectl delete pod ${pod}
-  echo "content expected:"
-  echo $content_exp
-  echo "content returned:"
-  echo $content_ret
+  echo "# content expected:" >&3
+  echo "# $content_exp" >&3
+  echo "# content returned:" >&3
+  echo "# $content_ret" >&3
   [[ ${content_ret} == ${content_exp} ]]
 }
 # __main__ {
