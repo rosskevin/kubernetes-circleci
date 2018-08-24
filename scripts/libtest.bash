@@ -97,7 +97,8 @@ _wait_for_cmd_ok() {
 
 ## Entry points used by 'bats' tests:
 verify_k8s_tools() {
-    local tools="kubectl kubecfg"
+    # local tools="kubectl kubecfg"
+    local tools="kubectl"
     for exe in $tools; do
         which ${exe} >/dev/null && continue
         echo "ERROR: '${exe}' needs to be installed"

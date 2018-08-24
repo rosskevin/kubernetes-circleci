@@ -22,7 +22,7 @@ install:
     curl -Ls https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/$(go env GOOS)/$(go env GOARCH)/kubectl |\
         install /dev/stdin ${GOPATH:?}/bin/kubectl
   - |-
-    curl -Ls https://github.com/ksonnet/kubecfg/releases/download/v0.4.0/kubecfg-$(go env GOOS)-$(go env GOARCH) | \
+    curl -Ls https://github.com/ksonnet/kubecfg/releases/download/v0.9.0/kubecfg-$(go env GOOS)-$(go env GOARCH) | \
         install /dev/stdin ${GOPATH:?}/bin/kubecfg
   - git clone --depth=1 https://github.com/sstephenson/bats.git bats && cd bats && sudo ./install /usr/local
 
