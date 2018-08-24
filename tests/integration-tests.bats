@@ -52,9 +52,7 @@ _verify_content() {
   kubectl delete pod ${pod}
   echo "# content expected: '$content_exp'" >&3
   echo "# content returned: '$content_ret'" >&3
-  local result=${content_ret} == ${content_exp}
-  echo "# result: '$result'" >&3
-  [[ result ]]
+  [[ ${content_ret} == ${content_exp} ]]
 }
 # __main__ {
 # Verify served content equal to nginx configmap
