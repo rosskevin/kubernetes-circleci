@@ -24,7 +24,7 @@ install:
   - |-
     curl -Ls https://github.com/ksonnet/kubecfg/releases/download/v0.9.0/kubecfg-$(go env GOOS)-$(go env GOARCH) | \
         install /dev/stdin ${GOPATH:?}/bin/kubecfg
-  - git clone --depth=1 https://github.com/sstephenson/bats.git bats && cd bats && sudo ./install /usr/local
+  - git clone --depth=1 https://github.com/sstephenson/bats.git bats && cd bats && sudo ./install /usr/local && rm -rf bats
 
 script:
   - |
