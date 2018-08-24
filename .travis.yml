@@ -11,7 +11,7 @@ services:
   - docker
 env:
   global:
-#    - CONTROLLER_IMAGE=${CONTROLLER_IMAGE_NAME}:${TRAVIS_TAG:-build-$TRAVIS_BUILD_ID}
+    #    - CONTROLLER_IMAGE=${CONTROLLER_IMAGE_NAME}:${TRAVIS_TAG:-build-$TRAVIS_BUILD_ID}
     - CGO_ENABLED=0
 
 before_install:
@@ -24,13 +24,12 @@ install:
   - |-
     curl -Ls https://github.com/ksonnet/kubecfg/releases/download/v0.4.0/kubecfg-$(go env GOOS)-$(go env GOARCH) | \
         install /dev/stdin ${GOPATH:?}/bin/kubecfg
-  - git clone --depth=1 https://github.com/sstephenson/bats.git bats
-  - export PATH=$PATH:$GOPATH/bin:$PWD/bats/bin
+  - git clone --depth=1 https://github.com/sstephenson/bats.git bats && cd bats && sudo ./install /usr/local
 
 script:
   - |
     if [ "$TRAVIS_OS_NAME" = linux ]; then
-      make integration-tests
+      ./scripts/integration-tests minikube
     fi
 
 after_success:
