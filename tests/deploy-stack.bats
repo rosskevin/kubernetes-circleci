@@ -21,10 +21,9 @@ load ../scripts/libtest
   verify_k8s_tools
 }
 @test "Deploy stack" {
-# Deploy the stack we want to test
-./scripts/deploy.sh delete >& /dev/null || true
-./scripts/deploy.sh create
-    k8s_wait_for_pod_running --namespace=kube-system -lname=traefik-ingress-lb
-    k8s_wait_for_pod_running -lapp=my-nginx
+  # Deploy the stack we want to test
+  ./scripts/deploy.sh delete >& /dev/null || true
+  ./scripts/deploy.sh create
+  k8s_wait_for_pod_running --namespace=kube-system -lname=traefik-ingress-lb
+  k8s_wait_for_pod_running -lapp=my-nginx
 }
-

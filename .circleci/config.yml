@@ -18,6 +18,7 @@ jobs:
           name: Setup kubectl, bats, minikube, and start it
           command: |
             echo "Using kubectl version ${K8S_VERSION}, minicube version ${MINIKUBE_VERSION}"
+            which bats
             # install kubectl
             curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${K8S_VERSION}/bin/linux/amd64/kubectl \
               && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
