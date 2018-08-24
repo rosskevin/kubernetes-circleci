@@ -30,7 +30,7 @@ jobs:
             # start minikube
             sudo minikube config set WantReportErrorPrompt false
             # Fix the kubectl context, as it's often stale.
-            sudo minikube update-context
+            # sudo minikube update-context # Error host driver ip status: Machine does not exist for api.Exists(minikube)
             # TODO: remove the --bootstrapper flag once this issue is solved: https://github.com/kubernetes/minikube/issues/2704
             sudo -E minikube start --vm-driver=none --bootstrapper=localkube --kubernetes-version=${K8S_VERSION} --extra-config=apiserver.Authorization.Mode=RBAC
       - run:
